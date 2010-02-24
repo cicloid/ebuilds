@@ -1,3 +1,0 @@
-www-servers/nginx fastcgi passenger -perl
-www-misc/passenger nginx
-dev-lang/ruby-enterprise threads
