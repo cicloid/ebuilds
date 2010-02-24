@@ -32,8 +32,8 @@ PDEPEND="dev-ruby/rubygems-ee"
 PROVIDE="virtual/ruby"
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-${MY_PV}-libdir.patch"
-	epatch "${FILESDIR}/${PN}-${MY_PV}-mkconfig.patch"
+	epatch "${FILESDIR}/libdir.patch"
+	epatch "${FILESDIR}/mkconfig.patch"
 	if use tcmalloc ; then
 		sed -i 's:^EXTLIBS.*:EXTLIBS = -ltcmalloc_minimal:' Makefile.in
 	fi
