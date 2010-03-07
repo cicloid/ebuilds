@@ -11,17 +11,17 @@ LICENSE="MIT"
 KEYWORDS="amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
 
 IUSE="nginx"
-DEPEND=">=dev-lang/ruby-1.8.7"
+DEPEND=">=dev-lang/ruby-enterprise-1.8.7"
 
 RDEPEND="${DEPEND}
-	>=dev-ruby/rubygems-1.3.4"
+	>=dev-ruby/rubygems-ee-1.3.6"
 
 src_install() {
 	gems_src_install
 	use nginx &&
-	    pushd "${D}/usr/lib64/ruby/gems/1.8/gems/passenger-2.2.11" &&
+	    pushd "${D}/usr/$(get_libdir)/ruby/gems/1.8/gems/passenger-2.2.11" &&
 	    patch -p0 < "${FILESDIR}/headers.patch" &&
-	    pushd "${D}usr/lib64/ruby/gems/1.8/gems/passenger-2.2.11/ext/nginx" &&
+	    pushd "${D}usr/$(get_libdir)/ruby/gems/1.8/gems/passenger-2.2.11/ext/nginx" &&
 	    OPTIMIZE="yes" rake nginx &&
 	    popd
 }

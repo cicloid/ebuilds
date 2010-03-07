@@ -19,9 +19,9 @@ RDEPEND="${DEPEND}
 src_install() {
 	gems_src_install
 	use nginx &&
-	    pushd "${D}/usr/lib64/ruby/gems/1.8/gems/passenger-2.2.10" &&
+	    pushd "${D}/usr/$(get_libdir)/ruby/gems/1.8/gems/passenger-2.2.10" &&
 	    patch -p0 < "${FILESDIR}/headers.patch" &&
-	    pushd "${D}usr/lib64/ruby/gems/1.8/gems/passenger-2.2.10/ext/nginx" &&
+	    pushd "${D}usr/$(get_libdir)/ruby/gems/1.8/gems/passenger-2.2.10/ext/nginx" &&
 	    OPTIMIZE="yes" rake nginx &&
 	    popd
 }
